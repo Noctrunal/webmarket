@@ -40,6 +40,7 @@ $(function () {
                 'defaultContent': '',
                 'render': function (data, type, row) {
                     if (type == 'display') {
+                        //noinspection JSUnresolvedVariable
                         return '<span>' + (row.amount > 0 ? 'Да' : 'Нет') + '</span>';
                     }
                     return data;
@@ -63,6 +64,7 @@ $(function () {
             ]
         ],
         'createdRow': function (row, data, dataIndex) {
+            //noinspection JSUnresolvedVariable
             $(row).addClass(data.amount > 0 ? 'available' : 'not_available')
         },
         'initComplete': makeEditable

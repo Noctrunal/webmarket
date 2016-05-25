@@ -1,15 +1,11 @@
 package com.webmarket.application.dao;
 
 import com.webmarket.application.model.Product;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
+import java.util.List;
 
-public interface ProductsDAO {
-    Product save(Product product);
-
-    Product get(int id);
-
-    void delete(int id);
-
-    Collection<Product> getAll();
+public interface ProductsDAO extends JpaRepository<Product, Integer> {
 }

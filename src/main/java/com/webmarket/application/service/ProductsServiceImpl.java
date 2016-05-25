@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-@Service("productsService")
+@Service
 public class ProductsServiceImpl implements ProductsService {
     @Autowired
     private ProductsDAO dao;
@@ -22,7 +22,7 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product get(int id) {
-        return dao.get(id);
+        return dao.findOne(id);
     }
 
     @CacheEvict(value = "products", allEntries = true)
@@ -40,7 +40,7 @@ public class ProductsServiceImpl implements ProductsService {
     @Cacheable("products")
     @Override
     public Collection<Product> getAll() {
-        return dao.getAll();
+        return dao.findAll();
     }
 
     @CacheEvict(value = "products", allEntries = true)

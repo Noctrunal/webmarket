@@ -28,6 +28,7 @@ public class LogBackConfig {
         return encoder;
     }
 
+    @SuppressWarnings("unchecked")
     @Bean(initMethod = "start", destroyMethod = "stop")
     public static ConsoleAppender consoleAppender(LoggerContext ctx, PatternLayoutEncoder encoder) {
         ConsoleAppender appender = new ConsoleAppender();
