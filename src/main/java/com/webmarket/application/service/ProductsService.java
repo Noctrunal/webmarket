@@ -14,6 +14,4 @@ public interface ProductsService {
     Product update(Product product);
 
     Collection<Product> getAll();
-
-    void evictCache();
 }

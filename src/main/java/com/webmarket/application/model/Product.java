@@ -1,7 +1,6 @@
 package com.webmarket.application.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.Cache;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
@@ -10,9 +9,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-import static org.hibernate.annotations.CacheConcurrencyStrategy.NONSTRICT_READ_WRITE;
-
-@Cache(usage = NONSTRICT_READ_WRITE)
 @Entity
 @Table(name = "products")
 public class Product extends BaseEntity {

@@ -14,7 +14,6 @@ public class ProductsServiceImpl implements ProductsService {
     @Autowired
     private ProductsDAO dao;
 
-    @CacheEvict(value = "products", allEntries = true)
     @Override
     public Product save(Product product) {
         return dao.save(product);
@@ -25,26 +24,18 @@ public class ProductsServiceImpl implements ProductsService {
         return dao.findOne(id);
     }
 
-    @CacheEvict(value = "products", allEntries = true)
     @Override
     public void delete(int id) {
         dao.delete(id);
     }
 
-    @CacheEvict(value = "products", allEntries = true)
     @Override
     public Product update(Product product) {
         return dao.save(product);
     }
 
-    @Cacheable("products")
     @Override
     public Collection<Product> getAll() {
         return dao.findAll();
-    }
-
-    @CacheEvict(value = "products", allEntries = true)
-    @Override
-    public void evictCache() {
     }
 }
