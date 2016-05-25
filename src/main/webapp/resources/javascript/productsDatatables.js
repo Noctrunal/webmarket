@@ -41,7 +41,7 @@ $(function () {
                 'render': function (data, type, row) {
                     if (type == 'display') {
                         //noinspection JSUnresolvedVariable
-                        return '<span>' + (row.amount > 0 ? 'Да' : 'Нет') + '</span>';
+                        return '<span>' + (row.amount > 0 ? 'Yes' : 'No') + '</span>';
                     }
                     return data;
                 }

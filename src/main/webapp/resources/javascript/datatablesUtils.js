@@ -85,14 +85,14 @@ function failNote(event, jqXHR, options, jsExc) {
 
 function renderEditButton(data, type, row) {
     if (type == 'display') {
-        return '<a class="btn btn-xs btn-primary" onclick="updateRow(' + row.id + ');">Редактировать</a>';
+        return '<a class="btn btn-xs btn-primary" onclick="updateRow(' + row.id + ');">Edit</a>';
     }
     return data;
 }
 
 function renderDeleteButton(data, type, row) {
     if (type == 'display') {
-        return '<a class="btn btn-xs btn-danger" onclick="removeRow(' + row.id + ');">Удалить</a>';
+        return '<a class="btn btn-xs btn-danger" onclick="removeRow(' + row.id + ');">Delete</a>';
     }
     return data;
 }

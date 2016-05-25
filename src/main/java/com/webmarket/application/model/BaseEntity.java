@@ -30,10 +30,6 @@ class BaseEntity {
         this.id = id;
     }
 
-    public boolean isNew() {
-        return (this.id == null);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
