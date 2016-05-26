@@ -6,12 +6,13 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.webmarket.application.service.ProductsService;
 import com.webmarket.application.util.ProductUtil;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-public abstract class AbstractProductsController {
+public abstract class AbstractProductsController extends WebMvcConfigurerAdapter {
     @Autowired
     private ProductsService service;
 
