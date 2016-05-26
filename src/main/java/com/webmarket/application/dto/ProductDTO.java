@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class ProductDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private String id;
 
     @NotNull(message = "must not be null")
     private int releaseYear;
@@ -29,7 +29,7 @@ public class ProductDTO implements Serializable {
     public ProductDTO() {
     }
 
-    public ProductDTO(Integer id, int releaseYear, String brand, String type, String description, int amount, double price) {
+    public ProductDTO(String id, int releaseYear, String brand, String type, String description, int amount, double price) {
         this.id = id;
         this.releaseYear = releaseYear;
         this.brand = brand;
@@ -39,12 +39,12 @@ public class ProductDTO implements Serializable {
         this.price = price;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = (id == null ? 0 : id);
+    public void setId(String id) {
+        this.id = (id == null ? "0" : id);
     }
 
     public int getReleaseYear() {

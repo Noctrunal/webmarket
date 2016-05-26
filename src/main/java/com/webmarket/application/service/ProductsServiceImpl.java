@@ -3,8 +3,6 @@ package com.webmarket.application.service;
 import com.webmarket.application.dao.ProductsDAO;
 import com.webmarket.application.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -20,12 +18,12 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public Product get(int id) {
+    public Product get(String id) {
         return dao.findOne(id);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         dao.delete(id);
     }
 

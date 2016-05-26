@@ -1,48 +1,29 @@
 package com.webmarket.application.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Entity
-@Table(name = "products")
 public class Product extends BaseEntity {
-    @Column(name = "release_year", nullable = false)
-    @NotNull
     private Integer releaseYear;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Column(name = "date", columnDefinition = "timestamp default now()")
     private Date date = new Date();
 
-    @Column(name = "brand", nullable = false)
-    @NotNull
     private String brand;
 
-    @Column(name = "type", nullable = false)
-    @NotNull
     private String type;
 
-    @Column(name = "price", nullable = false)
-    @NotNull
     private double price;
 
-    @Column(name = "amount")
     private int amount;
 
-    @Column(name = "description", nullable = false)
-    @NotEmpty
     private String description;
 
     public Product() {
     }
 
-    public Product(Integer id, int releaseYear, String brand, String type, double price, int amount, String description) {
+    public Product(String id, int releaseYear, String brand, String type, double price, int amount, String description) {
         super(id);
         this.releaseYear = releaseYear;
         this.brand = brand;

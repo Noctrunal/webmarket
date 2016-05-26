@@ -1,11 +1,7 @@
 package com.webmarket.application.dao;
 
 import com.webmarket.application.model.Product;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
-
-public interface ProductsDAO extends JpaRepository<Product, Integer> {
+public interface ProductsDAO extends MongoRepository<Product, String> {
 }

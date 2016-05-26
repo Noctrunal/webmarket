@@ -1,32 +1,23 @@
 package com.webmarket.application.model;
 
-import javax.persistence.Access;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import org.springframework.data.annotation.Id;
 
-import static javax.persistence.AccessType.FIELD;
-import static javax.persistence.GenerationType.IDENTITY;
-
-@MappedSuperclass
-@Access(FIELD)
 class BaseEntity {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+    private String id;
 
     public BaseEntity() {
     }
 
-    BaseEntity(Integer id) {
+    BaseEntity(String id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -46,6 +37,6 @@ class BaseEntity {
 
     @Override
     public int hashCode() {
-        return (id == null) ? 0 : id;
+        return (id == null) ? 0 : Integer.valueOf(id);
     }
 }

@@ -93,14 +93,14 @@ function failNote(event, jqXHR, options, jsExc) {
 
 function renderEditButton(data, type, row) {
     if (type == 'display') {
-        return '<a class="edit" onclick="updateRow(' + row.id + ');"><span class="fa-stack"><i class="glyphicon glyphicon-edit"></i> </span></a>';
+        return '<a class="edit" onclick="updateRow(' + '\''+ row.id +'\'' + ');"><span class="fa-stack"><i class="glyphicon glyphicon-edit"></i> </span></a>';
     }
     return data;
 }
 
 function renderDeleteButton(data, type, row) {
     if (type == 'display') {
-        return '<a class="delete" onclick="removeRow(' + row.id + ');"><span class="fa-stack"><i class="glyphicon glyphicon-trash"></i> </span></a>';
+        return '<a class="delete" onclick="removeRow(' + '\''+ row.id +'\'' + ');"><span class="fa-stack"><i class="glyphicon glyphicon-trash"></i> </span></a>';
     }
     return data;
 }

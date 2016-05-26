@@ -7,9 +7,9 @@ import java.util.Collection;
 public interface ProductsService {
     Product save(Product product);
 
-    Product get(int id);
+    Product get(String id);
 
-    void delete(int id);
+    void delete(String id);
 
     Product update(Product product);
 

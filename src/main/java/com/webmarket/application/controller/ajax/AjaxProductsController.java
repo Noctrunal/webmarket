@@ -28,18 +28,18 @@ public class AjaxProductsController extends AbstractProductsController {
     }
 
     @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
-    public Product get(@PathVariable("id") int id) {
+    public Product get(@PathVariable("id") String id) {
         return super.get(id);
     }
 
     @RequestMapping(value = "/{id}", method = DELETE)
-    public void delete(@PathVariable("id") int id) {
+    public void delete(@PathVariable("id") String id) {
         super.delete(id);
     }
 
     @RequestMapping(method = POST)
     public void createOrUpdate(@Valid ProductDTO productDTO) {
-        if (productDTO.getId() == 0) {
+        if (productDTO.getId().equals("0")) {
             super.save(ProductUtil.createFromTo(productDTO));
         } else {
             super.update(ProductUtil.updateFromTo(productDTO));

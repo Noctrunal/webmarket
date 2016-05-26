@@ -28,12 +28,12 @@ public abstract class AbstractProductsController extends WebMvcConfigurerAdapter
         service.update(product);
     }
 
-    public void delete(int id) {
+    public void delete(String id) {
         LOG.debug("delete {}", id);
         service.delete(id);
     }
 
-    public Product get(int id) {
+    public Product get(String id) {
         LOG.debug("get {}", id);
         return service.get(id);
     }
