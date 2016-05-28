@@ -6,9 +6,8 @@
 
     <groupId>webmarket</groupId>
     <artifactId>webmarket</artifactId>
-
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
     <name>Web Market</name>
     <url>https://localhost:8443/</url>
 
@@ -16,12 +15,6 @@
         <!--Java version and encoding-->
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- jQuery and Bootstrap -->
-        <webjars-jquery.version>2.2.3</webjars-jquery.version>
-        <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
-        <webjars-datetimepicker.version>2.4.7</webjars-datetimepicker.version>
-        <webjars-noty.version>2.3.8</webjars-noty.version>
-        <webjars-datatables.version>1.10.11</webjars-datatables.version>
     </properties>
 
     <parent>
@@ -46,61 +39,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <!--Test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!--Security-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
         <!--MongoDB-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
-
-        <!-- ThyMeLeaf ... -->
+        <!-- ThyMeLeaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
-        <!-- jQuery and Bootstrap-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>datatables</artifactId>
-            <version>${webjars-datatables.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>${webjars-bootstrap.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>${webjars-jquery.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>datetimepicker</artifactId>
-            <version>${webjars-datetimepicker.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>noty</artifactId>
-            <version>${webjars-noty.version}</version>
-        </dependency>
-
     </dependencies>
 </project>

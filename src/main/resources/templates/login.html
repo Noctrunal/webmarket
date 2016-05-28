@@ -13,16 +13,17 @@
 
     <title>Sign in</title>
 
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../css/signin.css"/>
+    <link rel="stylesheet" href="https://getbootstrap.com/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://getbootstrap.com/examples/signin/signin.css"/>
 
 </head>
 
-<body onload="document.f.username.focus();">
+<body onload="//noinspection JSUnresolvedVariable
+document.f.username.focus();">
 
 <div class="container">
 
-    <form class="form-signin" name="form" th:action="@{/login}" action="/login" method="post">
+    <form class="form-signin" name="form" th:action="@{/login}" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="username" class="sr-only">Email address</label>
         <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>
@@ -33,7 +34,7 @@
                 <input type="checkbox" value="remember-me" id="remember-me" name="remember-me"/> Remember me
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in <span class="glyphicon glyphicon-log-in"></span></button>
     </form>
 
 </div>
