@@ -2,10 +2,13 @@ var ajaxUrl = 'ajax/profile/products/';
 var datatableApi;
 
 function updateTable() {
+    //noinspection JSUnresolvedVariable
     $.get(ajaxUrl, updateTableByData);
 }
 
+//noinspection JSUnresolvedFunction
 $(function () {
+    //noinspection JSUnresolvedFunction,JSUnusedLocalSymbols
     datatableApi = $('#datatable').DataTable({
         'ajax': {
             'url': ajaxUrl,
@@ -116,7 +119,7 @@ $(function () {
             ]
         ],
         'createdRow': function (row, data, dataIndex) {
-            //noinspection JSUnresolvedVariable
+            //noinspection JSUnresolvedVariable,JSUnresolvedFunction
             $(row).addClass(data.amount > 0 ? 'available' : 'not_available')
         },
         'initComplete': makeEditable

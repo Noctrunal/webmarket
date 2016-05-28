@@ -3,27 +3,30 @@ package com.webmarket.application.dto;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@SuppressWarnings("unused")
 public class ProductDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private static final String JSON_VALIDATION_MESSAGE = "must not be empty";
+
     private String id;
 
-    @NotNull(message = "must not be null")
+    @NotNull(message = JSON_VALIDATION_MESSAGE)
     private int releaseYear;
 
-    @NotNull(message = "must not be null")
+    @NotNull(message = JSON_VALIDATION_MESSAGE)
     private String brand;
 
-    @NotNull(message = "must not be null")
+    @NotNull(message = JSON_VALIDATION_MESSAGE)
     private String type;
 
-    @NotNull(message = "must not be null")
+    @NotNull(message = JSON_VALIDATION_MESSAGE)
     private String description;
 
-    @NotNull(message = "must not be null")
+    @NotNull(message = JSON_VALIDATION_MESSAGE)
     private int amount;
 
-    @NotNull(message = "must not be null")
+    @NotNull(message = JSON_VALIDATION_MESSAGE)
     private double price;
 
     public ProductDTO() {
@@ -37,6 +40,10 @@ public class ProductDTO implements Serializable {
         this.description = description;
         this.amount = amount;
         this.price = price;
+    }
+
+    public boolean isNew() {
+        return (id.equals("0"));
     }
 
     public String getId() {

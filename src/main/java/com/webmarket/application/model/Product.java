@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
+@SuppressWarnings("unused")
 public class Product extends BaseEntity {
+    private static final String JSON_DATE_PATTERN = "yyyy-MM-dd";
+
     private Integer releaseYear;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = JSON_DATE_PATTERN)
     private Date date = new Date();
 
     private String brand;

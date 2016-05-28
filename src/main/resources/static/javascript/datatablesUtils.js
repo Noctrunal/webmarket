@@ -1,6 +1,7 @@
 var form;
 
 function makeEditable() {
+    //noinspection JSUnresolvedFunction
     form = $('#detailsForm');
 
     form.submit(function () {
@@ -8,9 +9,13 @@ function makeEditable() {
         return false;
     });
 
+    //noinspection JSUnresolvedFunction
     $(function () {
+        //noinspection JSUnresolvedFunction
         var token = $("meta[name='_csrf']").attr("content");
+        //noinspection JSUnresolvedFunction
         var header = $("meta[name='_csrf_header']").attr("content");
+        //noinspection JSUnresolvedFunction,JSUnusedLocalSymbols
         $(document).ajaxSend(function(e, xhr, options) {
             xhr.setRequestHeader(header, token);
         });
@@ -19,22 +24,31 @@ function makeEditable() {
 }
 
 function add() {
+    //noinspection JSUnresolvedFunction
     form.find(':input').val('');
+    //noinspection JSUnresolvedFunction
     $('#id').val(0);
+    //noinspection JSUnresolvedFunction
     $('#editModal').modal();
 }
 
 function updateRow(id) {
+    //noinspection JSUnresolvedVariable
     $.get(ajaxUrl + id, function (data) {
+        //noinspection JSUnresolvedFunction,JSUnresolvedVariable
         $.each(data, function (key, value) {
+            //noinspection JSUnresolvedFunction
             form.find("input[name='" + key + "']").val(value);
+            //noinspection JSUnresolvedFunction
             form.find("textArea[name='" + key + "']").val(value);
         });
+        //noinspection JSUnresolvedFunction
         $('#editModal').modal();
     });
 }
 
 function removeRow(id) {
+    //noinspection JSUnresolvedVariable
     $.ajax({
         url: ajaxUrl + id,
         type: 'DELETE',
@@ -46,15 +60,18 @@ function removeRow(id) {
 }
 
 function updateTableByData(data) {
+    //noinspection JSUnresolvedFunction
     datatableApi.clear().rows.add(data).draw();
 }
 
 function save() {
+    //noinspection JSUnresolvedFunction,JSUnresolvedVariable
     $.ajax({
         type: 'POST',
         url: ajaxUrl,
         data: form.serialize(),
         success: function () {
+            //noinspection JSUnresolvedFunction
             $('#editModal').modal('hide');
             updateTable();
             successNote('Saved')
@@ -73,6 +90,7 @@ function closeNote() {
 
 function successNote(text) {
     closeNote();
+    //noinspection JSUnresolvedFunction
     noty({
         text: text,
         type: 'success',
@@ -81,9 +99,12 @@ function successNote(text) {
     });
 }
 
+//noinspection JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 function failNote(event, jqXHR, options, jsExc) {
     closeNote();
+    //noinspection JSUnresolvedFunction,JSUnresolvedVariable
     var errorInfo = $.parseJSON(jqXHR.responseText);
+    //noinspection JSUnresolvedFunction,JSUnresolvedVariable
     failedNote = noty({
         text: 'Failed: ' + jqXHR.statusText + '<br>' + errorInfo.cause + '<br>' + errorInfo.detail,
         type: 'error',

@@ -6,7 +6,7 @@ class BaseEntity {
     @Id
     private String id;
 
-    public BaseEntity() {
+    BaseEntity() {
     }
 
     BaseEntity(String id) {
@@ -23,20 +23,17 @@ class BaseEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
         BaseEntity that = (BaseEntity) o;
-        return !(id == null || that.id == null) && id.equals(that.id);
+
+        return id != null ? id.equals(that.id) : that.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        return (id == null) ? 0 : Integer.valueOf(id);
+        return id != null ? id.hashCode() : 0;
     }
 }

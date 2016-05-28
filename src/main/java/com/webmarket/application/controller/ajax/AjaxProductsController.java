@@ -39,7 +39,7 @@ public class AjaxProductsController extends AbstractProductsController {
 
     @RequestMapping(method = POST)
     public void createOrUpdate(@Valid ProductDTO productDTO) {
-        if (productDTO.getId().equals("0")) {
+        if (productDTO.isNew()) {
             super.save(ProductUtil.createFromTo(productDTO));
         } else {
             super.update(ProductUtil.updateFromTo(productDTO));
