@@ -1,52 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-
-    <title>Web market of electronic products</title>
-
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" th:href="@{//getbootstrap.com/dist/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css}"/>
-    <link rel="stylesheet" th:href="@{//cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css}"/>
-    <link rel="stylesheet" th:href="@{//getbootstrap.com/examples/starter-template/starter-template.css}"/>
-    <link rel="stylesheet" th:href="@{//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css}"/>
-
-</head>
+<head th:substituteby="/fragments/head :: head"></head>
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Products</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                   <form class="navbar-form" th:action="@{/logout}" method="post">
-                       <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-log-out"></span> Sign out</button>
-                   </form>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<nav th:substituteby="/fragments/body :: nav"></nav>
 
 <div class="container">
     <div class="starter-template">
@@ -137,7 +96,8 @@
 
                     <div class="form-group">
                         <div class="col-xs-offset-3 col-xs-9">
-                            <button type="submit" class="btn btn-primary">Save <span class="glyphicon glyphicon-ok"></span></button>
+                            <button type="submit" class="btn btn-primary">Save <span
+                                    class="glyphicon glyphicon-ok"></span></button>
                         </div>
                     </div>
                 </form>
@@ -146,17 +106,7 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" th:src="@{//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{//code.jquery.com/jquery-1.12.3.min.js}"></script>
-<script type="text/javascript" th:src="@{//getbootstrap.com/dist/js/bootstrap.min.js}"></script>
-<script type="text/javascript" th:src="@{//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js}"></script>
-<script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.8/packaged/jquery.noty.packaged.min.js}"></script>
-<script type="text/javascript" th:src="@{//cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js}"></script>
-<script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js}"></script>
-<script type="text/javascript" th:src="@{//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js}"></script>
-<script type="text/javascript" th:src="@{//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js}"></script>
-<script type="text/javascript" th:src="@{//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js}"></script>
-<script type="text/javascript" th:src="@{//cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js}"></script>
+<footer th:substituteby="/fragments/footer :: footer"></footer>
 <script type="text/javascript" th:src="@{/javascript/datatablesUtils.js}"></script>
 <script type="text/javascript" th:src="@{/javascript/productsDatatables.js}"></script>
 </html>

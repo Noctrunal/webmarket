@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-
-    <title>Sign in</title>
-
-    <link rel="stylesheet" th:href="@{//getbootstrap.com/dist/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{//getbootstrap.com/examples/signin/signin.css}"/>
-
-</head>
+<head th:substituteby="/fragments/head :: head"></head>
 
 <body onload="//noinspection JSUnresolvedVariable
 document.f.username.focus();">
 
 <div class="container">
 
+    <nav th:substituteby="/fragments/body :: nav"></nav>
+
     <form class="form-signin" name="form" th:action="@{/login}" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="username" class="sr-only">Email address</label>
-        <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>
+        <input type="email" id="username" name="username" class="form-control" placeholder="Email address"
+               required="required" autofocus="autofocus"/>
         <label for="password" class="sr-only">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required"/>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+               required="required"/>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me" id="remember-me" name="remember-me"/> Remember me
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in <span class="glyphicon glyphicon-log-in"></span></button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in <span
+                class="glyphicon glyphicon-log-in"></span></button>
     </form>
 
 </div>
 
 </body>
+
+<footer th:substituteby="/fragments/footer :: footer"></footer>
+
 </html>
