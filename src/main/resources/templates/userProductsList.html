@@ -21,7 +21,9 @@
                     <p class="group inner list-group-item-text" th:text="${product.description}"></p>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
-                            <p class="lead" th:text="${product.price}"></p>
+                            <div class="lead">$
+                                <p th:text="${product.price}" th:remove="tag"></p>
+                            </div>
                         </div>
                         <div class="col-xs-12 col-md-6">
                             <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>

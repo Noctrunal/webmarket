@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
     $('#list').click(function (event) {
         event.preventDefault();
         $('#products .item').addClass('list-group-item');

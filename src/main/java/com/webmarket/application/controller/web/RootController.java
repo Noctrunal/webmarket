@@ -12,8 +12,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 public class RootController extends AbstractProductsController {
     @RequestMapping(value = "/manage", method = GET)
-    public String manage(ModelAndView model) {
-        model.addObject(super.getAll());
+    public String manage() {
         return "adminProductsList";
     }
 

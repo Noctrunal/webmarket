@@ -2,13 +2,10 @@ var ajaxUrl = '/ajax/admin/products/';
 var datatableApi;
 
 function updateTable() {
-    //noinspection JSUnresolvedVariable
     $.get(ajaxUrl, updateTableByData);
 }
 
-//noinspection JSUnresolvedFunction
 $(function () {
-    //noinspection JSUnresolvedFunction,JSUnusedLocalSymbols
     datatableApi = $('#datatable').DataTable({
         'ajax': {
             'url': ajaxUrl,
@@ -49,7 +46,6 @@ $(function () {
                 'defaultContent': '',
                 'render': function (data, type, row) {
                     if (type == 'display') {
-                        //noinspection JSUnresolvedVariable
                         return '<span>' + (row.amount > 0 ? 'Yes' : 'No') + '</span>';
                     }
                     return data;
@@ -67,13 +63,11 @@ $(function () {
             }
         ],
         dom: 'Bfrtip',
-        buttons:
-            [
+        buttons: [
             {
                 extend: 'collection',
                 text: 'Export <span class="glyphicon glyphicon-export"></span>',
-                buttons:
-                [
+                buttons: [
                     {
                         extend: 'copyHtml5',
                         text: 'Copy <i class="fa fa-files-o"></i>',
@@ -111,7 +105,7 @@ $(function () {
                     }
                 ]
             }
-            ],
+        ],
         'order': [
             [
                 0,
@@ -119,7 +113,6 @@ $(function () {
             ]
         ],
         'createdRow': function (row, data, dataIndex) {
-            //noinspection JSUnresolvedVariable,JSUnresolvedFunction
             $(row).addClass(data.amount > 0 ? 'available' : 'not_available')
         },
         'initComplete': makeEditable
