@@ -2,6 +2,7 @@ package com.webmarket.application.controller.web;
 
 import com.webmarket.application.controller.AbstractProductsController;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -17,7 +18,8 @@ public class RootController extends AbstractProductsController {
     }
 
     @RequestMapping(value = {"/", "/products"}, method = GET)
-    public String products() {
+    public String products(Model model) {
+        model.addAttribute("products", super.getAll());
         return "userProductsList";
     }
 
