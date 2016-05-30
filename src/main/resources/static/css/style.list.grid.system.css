@@ -1,16 +1,7 @@
-.available {
-    color: green;
-}
-
-.not_available {
-    color: red;
-}
-
 .glyphicon {
     margin-right: 5px;
 }
 
-/*noinspection CssRedundantUnit*/
 .thumbnail {
     margin-bottom: 20px;
     padding: 0px;
@@ -34,12 +25,10 @@
     margin-right: 10px;
 }
 
-/*noinspection CssRedundantUnit*/
 .item.list-group-item .thumbnail {
     margin-bottom: 0px;
 }
 
-/*noinspection CssRedundantUnit*/
 .item.list-group-item .caption {
     padding: 9px 9px 0px 9px;
 }
