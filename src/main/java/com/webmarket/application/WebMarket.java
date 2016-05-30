@@ -20,12 +20,9 @@ public class WebMarket {
     protected static class WebMarketSecurity extends WebSecurityConfigurerAdapter {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests().anyRequest().fullyAuthenticated().and().formLogin()
-                    .loginPage("/login").failureUrl("/login?error").permitAll().and()
-                    .logout().permitAll().and()
-                    .requiresChannel().anyRequest()
-                    .requiresSecure().and()
-                    .rememberMe().rememberMeParameter("remember-me");
+            http.requiresChannel().anyRequest().requiresSecure();
+            http.formLogin().loginPage("/login").failureUrl("/login?error").permitAll().and().logout().permitAll().and().rememberMe().rememberMeParameter("remember-me");
+            http.authorizeRequests().antMatchers("/manage").hasRole("ADMIN");
         }
 
         @Override

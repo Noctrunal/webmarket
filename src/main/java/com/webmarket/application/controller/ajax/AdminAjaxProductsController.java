@@ -11,7 +11,7 @@ import com.webmarket.application.util.ProductUtil;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.webmarket.application.controller.ajax.AjaxProductsController.AJAX_URL;
+import static com.webmarket.application.controller.ajax.AdminAjaxProductsController.AJAX_URL;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -19,8 +19,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping(AJAX_URL)
-public class AjaxProductsController extends AbstractProductsController {
-    static final String AJAX_URL = "/ajax/profile/products";
+public class AdminAjaxProductsController extends AbstractProductsController {
+    static final String AJAX_URL = "/ajax/admin/products/";
 
     @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
     public List<Product> getAll() {

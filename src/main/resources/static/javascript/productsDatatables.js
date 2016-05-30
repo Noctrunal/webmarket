@@ -1,4 +1,4 @@
-var ajaxUrl = 'ajax/profile/products/';
+var ajaxUrl = '/ajax/admin/products/';
 var datatableApi;
 
 function updateTable() {
