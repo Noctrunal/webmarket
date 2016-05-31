@@ -2,11 +2,31 @@ package com.webmarket.application.util;
 
 import com.webmarket.application.dto.ProductDTO;
 import com.webmarket.application.model.Product;
+import org.jets3t.service.S3Service;
+import org.jets3t.service.S3ServiceException;
+import org.jets3t.service.acl.AccessControlList;
+import org.jets3t.service.acl.GroupGrantee;
+import org.jets3t.service.acl.Permission;
+import org.jets3t.service.impl.rest.httpclient.RestS3Service;
+import org.jets3t.service.model.S3Bucket;
+import org.jets3t.service.model.S3Object;
+import org.jets3t.service.security.AWSCredentials;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Configuration
+@PropertySource("classpath:amazon-s3.properties")
 public class ProductUtil {
+    @Autowired
+    private Environment environment;
 
     public static List<ProductDTO> getFilteredByPrice(List<Product> products, double startPrice, double endPrice) {
         return products.stream().filter(
@@ -39,6 +59,29 @@ public class ProductUtil {
         );
     }
 
+    public String getImageUrl(String fileName, MultipartFile image) {
+        try {
+            AWSCredentials awsCredentials = new AWSCredentials(environment.getProperty("AWSAccessKeyId"), environment.getProperty("AWSSecretKey"));
+            S3Service s3Service = new RestS3Service(awsCredentials);
+            S3Bucket imageBucket = s3Service.getBucket("webmarketelectronic");
+            S3Object imageObject = new S3Object(fileName);
+            imageObject.setDataInputStream(new ByteArrayInputStream(image.getBytes()));
+            imageObject.setContentLength(image.getBytes().length);
+            imageObject.setContentType("image/jpeg");
+
+            AccessControlList accessControlList = new AccessControlList();
+            accessControlList.setOwner(imageBucket.getOwner());
+            accessControlList.grantPermission(GroupGrantee.ALL_USERS, Permission.PERMISSION_READ);
+            imageObject.setAcl(accessControlList);
+
+            s3Service.putObject(imageBucket, imageObject);
+
+        } catch (S3ServiceException | IOException e) {
+            e.printStackTrace();
+        }
+        return "//s3.amazonaws.com/webmarketelectronic/" + fileName;
+    }
+
     public static Product createFromTo(ProductDTO productDTO) {
         return new Product(
                 null,
@@ -52,7 +95,7 @@ public class ProductUtil {
     }
 
     public static Product updateFromTo(ProductDTO productDTO) {
-        return new Product(
+        Product product = new Product(
                 productDTO.getId(),
                 productDTO.getReleaseYear(),
                 productDTO.getBrand(),
@@ -61,5 +104,7 @@ public class ProductUtil {
                 productDTO.getAmount(),
                 productDTO.getDescription()
         );
+        product.setImageUrl(productDTO.getImageUrl());
+        return product;
     }
 }

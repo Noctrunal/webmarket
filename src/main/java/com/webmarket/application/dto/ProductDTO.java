@@ -29,6 +29,8 @@ public class ProductDTO implements Serializable {
     @NotNull(message = JSON_VALIDATION_MESSAGE)
     private double price;
 
+    private String imageUrl;
+
     public ProductDTO() {
     }
 
@@ -102,4 +104,11 @@ public class ProductDTO implements Serializable {
         this.price = price;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

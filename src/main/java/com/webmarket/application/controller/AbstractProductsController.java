@@ -18,14 +18,14 @@ public abstract class AbstractProductsController extends WebMvcConfigurerAdapter
 
     private static final Logger LOG = getLogger(AbstractProductsController.class);
 
-    protected void save(Product product) {
+    protected Product save(Product product) {
         LOG.debug("save {}", product);
-        service.save(product);
+        return service.save(product);
     }
 
-    protected void update(Product product) {
+    protected Product update(Product product) {
         LOG.debug("update {}", product);
-        service.update(product);
+        return service.update(product);
     }
 
     public void delete(String id) {

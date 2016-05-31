@@ -23,6 +23,8 @@ public class Product extends BaseEntity {
 
     private String description;
 
+    private String imageUrl;
+
     public Product() {
     }
 
@@ -90,5 +92,13 @@ public class Product extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

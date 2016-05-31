@@ -2,18 +2,6 @@ var form;
 
 function makeEditable() {
     form = $('#detailsForm');
-    form.submit(function () {
-        save();
-        return false;
-    });
-
-    $(function () {
-        var token = $("meta[name='_csrf']").attr("content");
-        var header = $("meta[name='_csrf_header']").attr("content");
-        $(document).ajaxSend(function (e, xhr, options) {
-            xhr.setRequestHeader(header, token);
-        });
-    });
 }
 
 function add() {
@@ -45,19 +33,6 @@ function removeRow(id) {
 
 function updateTableByData(data) {
     datatableApi.clear().rows.add(data).draw();
-}
-
-function save() {
-    $.ajax({
-        type: 'POST',
-        url: ajaxUrl,
-        data: form.serialize(),
-        success: function () {
-            $('#editModal').modal('hide');
-            updateTable();
-            successNote('Saved')
-        }
-    });
 }
 
 var failedNote;
