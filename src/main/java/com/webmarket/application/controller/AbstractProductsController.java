@@ -2,54 +2,42 @@ package com.webmarket.application.controller;
 
 import com.webmarket.application.dto.ProductDTO;
 import com.webmarket.application.model.Product;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.webmarket.application.service.ProductsService;
 import com.webmarket.application.util.ProductUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.List;
-
-import static org.slf4j.LoggerFactory.getLogger;
 
 public abstract class AbstractProductsController extends WebMvcConfigurerAdapter {
     @Autowired
     private ProductsService service;
 
-    private static final Logger LOG = getLogger(AbstractProductsController.class);
-
     protected Product save(Product product) {
-        LOG.debug("save {}", product);
         return service.save(product);
     }
 
     protected Product update(Product product) {
-        LOG.debug("update {}", product);
         return service.update(product);
     }
 
-    public void delete(String id) {
-        LOG.debug("delete {}", id);
+    protected void delete(String id) {
         service.delete(id);
     }
 
-    public Product get(String id) {
-        LOG.debug("get {}", id);
+    protected Product get(String id) {
         return service.get(id);
     }
 
-    public List<Product> getAll() {
-        LOG.debug("getAll");
+    protected List<Product> getAll() {
         return (List<Product>) service.getAll();
     }
 
-    public List<ProductDTO> getAllBetweenPrices(double start, double end) {
-        LOG.debug("getAllBetweenPrices {} ", start, end);
+    protected List<ProductDTO> getAllBetweenPrices(double start, double end) {
         return ProductUtil.getFilteredByPrice(getAll(), start, end);
     }
 
-    public List<ProductDTO> getAllBetweenYears(int start, int end) {
-        LOG.debug("getAllBetweenYears {}", start, end);
+    protected List<ProductDTO> getAllBetweenYears(int start, int end) {
         return ProductUtil.getFilteredByYears(getAll(), start, end);
     }
 }

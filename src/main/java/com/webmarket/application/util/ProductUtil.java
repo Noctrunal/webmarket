@@ -59,7 +59,7 @@ public class ProductUtil {
         );
     }
 
-    public String getImageUrl(String fileName, MultipartFile image) {
+    public String saveImageAndGetUrl(String fileName, MultipartFile image) {
         try {
             AWSCredentials awsCredentials = new AWSCredentials(environment.getProperty("AWSAccessKeyId"), environment.getProperty("AWSSecretKey"));
             S3Service s3Service = new RestS3Service(awsCredentials);
@@ -80,6 +80,17 @@ public class ProductUtil {
             e.printStackTrace();
         }
         return "//s3.amazonaws.com/webmarketelectronic/" + fileName;
+    }
+
+    public void deleteImage(String key) {
+        try {
+            AWSCredentials awsCredentials = new AWSCredentials(environment.getProperty("AWSAccessKeyId"), environment.getProperty("AWSSecretKey"));
+            S3Service s3Service = new RestS3Service(awsCredentials);
+            S3Bucket imageBucket = s3Service.getBucket("webmarketelectronic");
+            s3Service.deleteObject(imageBucket, key);
+        } catch (S3ServiceException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Product createFromTo(ProductDTO productDTO) {

@@ -2,12 +2,32 @@ var form;
 
 function makeEditable() {
     form = $('#detailsForm');
+    form.submit(function () {
+        save();
+        return false;
+    })
 }
 
 function add() {
     form.find(':input').val('');
     $('#id').val(0);
     $('#editModal').modal();
+}
+
+function save() {
+    var formData = new FormData(form[0]);
+    $.ajax({
+        url: ajaxUrl,
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            $('#editModal').modal('hide');
+            updateTable();
+            successNote('Saved');
+        }
+    });
 }
 
 function updateRow(id) {
