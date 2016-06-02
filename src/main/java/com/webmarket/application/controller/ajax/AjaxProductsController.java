@@ -5,6 +5,8 @@ import com.webmarket.application.dto.ProductDTO;
 import com.webmarket.application.model.Product;
 import com.webmarket.application.util.ProductUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,13 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.webmarket.application.controller.ajax.AdminAjaxProductsController.AJAX_URL;
+import static com.webmarket.application.controller.ajax.AjaxProductsController.AJAX_URL;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @RequestMapping(AJAX_URL)
-class AdminAjaxProductsController extends AbstractProductsController {
+public class AjaxProductsController extends AbstractProductsController {
     @Autowired
     private ProductUtil productUtil;
 

@@ -1,9 +1,10 @@
 package com.webmarket.application.dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@SuppressWarnings("unused")
 public class ProductDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -14,13 +15,13 @@ public class ProductDTO implements Serializable {
     @NotNull(message = JSON_VALIDATION_MESSAGE)
     private int releaseYear;
 
-    @NotNull(message = JSON_VALIDATION_MESSAGE)
+    @NotEmpty(message = JSON_VALIDATION_MESSAGE)
     private String brand;
 
-    @NotNull(message = JSON_VALIDATION_MESSAGE)
+    @NotEmpty(message = JSON_VALIDATION_MESSAGE)
     private String type;
 
-    @NotNull(message = JSON_VALIDATION_MESSAGE)
+    @NotEmpty(message = JSON_VALIDATION_MESSAGE)
     private String description;
 
     @NotNull(message = JSON_VALIDATION_MESSAGE)

@@ -5,11 +5,18 @@ function makeEditable() {
     form.submit(function () {
         save();
         return false;
-    })
+    });
+
+    $(document).ajaxError(function (event, jqXHR, options, jsExc) {
+        failNote(event, jqXHR, options, jsExc);
+    });
 }
 
 function add() {
     form.find(':input').val('');
+    $('#releaseYear').val(0);
+    $('#price').val(0);
+    $('#amount').val(0);
     $('#id').val(0);
     $('#editModal').modal();
 }
@@ -76,9 +83,9 @@ function successNote(text) {
 
 function failNote(event, jqXHR, options, jsExc) {
     closeNote();
-    var errorInfo = $.parseJSON(jqXHR.responseText);
+    var httpExceptionInfo = $.parseJSON(jqXHR.responseText);
     failedNote = noty({
-        text: 'Failed: ' + jqXHR.statusText + '<br>' + errorInfo.cause + '<br>' + errorInfo.detail,
+        text: 'Failed: ' + jqXHR.statusText + '<br>' + httpExceptionInfo.cause + '<br>' + httpExceptionInfo.detail,
         type: 'error',
         layout: 'bottomRight'
     });
