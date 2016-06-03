@@ -11,7 +11,5 @@ public interface ProductsService {
 
     void delete(String id);
 
-    Product update(Product product);
-
     Collection<Product> getAll();
 }

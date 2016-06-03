@@ -17,10 +17,6 @@ public abstract class AbstractProductsController extends WebMvcConfigurerAdapter
         return service.save(product);
     }
 
-    protected Product update(Product product) {
-        return service.update(product);
-    }
-
     protected void delete(String id) {
         service.delete(id);
     }

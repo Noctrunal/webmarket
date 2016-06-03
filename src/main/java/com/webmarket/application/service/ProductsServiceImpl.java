@@ -2,6 +2,7 @@ package com.webmarket.application.service;
 
 import com.webmarket.application.dao.ProductsDAO;
 import com.webmarket.application.model.Product;
+import com.webmarket.application.util.ExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +20,12 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product get(String id) {
-        return dao.findOne(id);
+        return ExceptionUtil.checkEntity(dao.findOne(id), id);
     }
 
     @Override
     public void delete(String id) {
-        dao.delete(id);
-    }
-
-    @Override
-    public Product update(Product product) {
-        return dao.save(product);
+        ExceptionUtil.checkEntity(dao.deleteById(id), id);
     }
 
     @Override

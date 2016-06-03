@@ -5,8 +5,6 @@ import com.webmarket.application.dto.ProductDTO;
 import com.webmarket.application.model.Product;
 import com.webmarket.application.util.ProductUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindException;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +20,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @RequestMapping(AJAX_URL)
-public class AjaxProductsController extends AbstractProductsController {
+class AjaxProductsController extends AbstractProductsController {
     @Autowired
     private ProductUtil productUtil;
 
@@ -50,18 +48,18 @@ public class AjaxProductsController extends AbstractProductsController {
             if (productDTO.isNew()) {
                 Product product = super.save(ProductUtil.createFromTo(productDTO));
                 product.setImageUrl(productUtil.saveImageAndGetUrl(product.getId() + ".jpg", image));
-                super.update(product);
+                super.save(product);
             } else {
                 Product product = ProductUtil.updateFromTo(productDTO);
                 product.setImageUrl(productUtil.saveImageAndGetUrl(product.getId() + ".jpg", image));
-                super.update(product);
+                super.save(product);
             }
         } else {
             if (productDTO.isNew()) {
                 super.save(ProductUtil.createFromTo(productDTO));
             } else {
                 productDTO.setImageUrl(super.get(productDTO.getId()).getImageUrl());
-                super.update(ProductUtil.updateFromTo(productDTO));
+                super.save(ProductUtil.updateFromTo(productDTO));
             }
         }
     }
