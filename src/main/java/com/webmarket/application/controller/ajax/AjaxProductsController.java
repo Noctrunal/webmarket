@@ -1,6 +1,7 @@
 package com.webmarket.application.controller.ajax;
 
 import com.webmarket.application.controller.AbstractProductsController;
+import com.webmarket.application.controller.manager.AmazonStorageManager;
 import com.webmarket.application.dto.ProductDTO;
 import com.webmarket.application.model.Product;
 import com.webmarket.application.util.ProductUtil;
@@ -21,10 +22,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @RequestMapping(AJAX_URL)
 class AjaxProductsController extends AbstractProductsController {
-    @Autowired
-    private ProductUtil productUtil;
-
     static final String AJAX_URL = "/ajax/admin/products/";
+
+    @Autowired
+    private AmazonStorageManager storageManager;
 
     @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
     public List<Product> getAll() {
@@ -39,7 +40,7 @@ class AjaxProductsController extends AbstractProductsController {
     @RequestMapping(value = "/{id}", method = DELETE)
     public void delete(@PathVariable("id") String id) {
         super.delete(id);
-        productUtil.deleteImage(id + ".jpg");
+        storageManager.delete(id + ".jpg");
     }
 
     @RequestMapping(method = POST)
@@ -47,11 +48,11 @@ class AjaxProductsController extends AbstractProductsController {
         if (!image.isEmpty()) {
             if (productDTO.isNew()) {
                 Product product = super.save(ProductUtil.createFromTo(productDTO));
-                product.setImageUrl(productUtil.saveImageAndGetUrl(product.getId() + ".jpg", image));
+                product.setImageUrl(storageManager.save(product.getId() + ".jpg", image));
                 super.save(product);
             } else {
                 Product product = ProductUtil.updateFromTo(productDTO);
-                product.setImageUrl(productUtil.saveImageAndGetUrl(product.getId() + ".jpg", image));
+                product.setImageUrl(storageManager.save(product.getId() + ".jpg", image));
                 super.save(product);
             }
         } else {
