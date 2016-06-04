@@ -1,0 +1,76 @@
+<div class="modal fade" id="viewModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title">View product</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="get" id="viewForm">
+                    <input type="text" hidden="hidden" id="id" name="id"/>
+
+                    <input type="text" hidden="hidden" id="date" name="date"/>
+
+                    <div class="form-group">
+                        <label for="imageUrl" class="control-label col-xs-3"></label>
+
+                        <div class="col-xs-9">
+                            <img id="imageUrl" name="imageUrl"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="releaseYear" class="control-label col-xs-3">Since year</label>
+
+                        <div class="col-xs-9">
+                            <input type="number" class="form-control" id="releaseYear" name="releaseYear"
+                                   placeholder="Since year" readonly="readonly"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="brand" class="control-label col-xs-3">Brand</label>
+
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand" readonly="readonly"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type" class="control-label col-xs-3">Type</label>
+
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="type" name="type" placeholder="Type" readonly="readonly"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="control-label col-xs-3">Description</label>
+
+                        <div class="col-xs-9">
+                            <textarea class="form-control" id="description" name="description" placeholder="Description"
+                                      cols="80" rows="3" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price" class="control-label col-xs-3">Price</label>
+
+                        <div class="col-xs-9">
+                            <input type="number" step="5.00" class="form-control" id="price" name="price"
+                                   placeholder="Price" readonly="readonly"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount" class="control-label col-xs-3">Amount</label>
+
+                        <div class="col-xs-9">
+                            <input type="number" class="form-control" id="amount" name="amount" placeholder="Amount" readonly="readonly"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

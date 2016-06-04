@@ -6,6 +6,12 @@ function makeEditable() {
         save();
         return false;
     });
+    
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    $(document).ajaxSend(function(e, xhr, options) {
+        xhr.setRequestHeader(header, token);
+    });
 
     $(document).ajaxError(function (event, jqXHR, options, jsExc) {
         failNote(event, jqXHR, options, jsExc);
@@ -35,6 +41,19 @@ function save() {
             successNote('Saved');
         }
     });
+}
+
+function viewRow(id) {
+    var viewForm = $('#viewForm');
+    $.get(ajaxUrl + id, function (data) {
+        $.each(data, function (key, value) {
+            debugger;
+            viewForm.find("input[name='" + key + "']").val(value);
+            viewForm.find("textArea[name='" + key + "']").val(value);
+        });
+        $('#imageUrl').attr('src', data.imageUrl);
+    });
+    $('#viewModal').modal();
 }
 
 function updateRow(id) {
@@ -101,6 +120,13 @@ function renderEditButton(data, type, row) {
 function renderDeleteButton(data, type, row) {
     if (type == 'display') {
         return '<a class="btn btn-danger" onclick="removeRow(' + '\'' + row.id + '\'' + ');">Delete <span class="glyphicon glyphicon-trash"></span></a>';
+    }
+    return data;
+}
+
+function renderViewButton(data, type, row) {
+    if (type == 'display') {
+        return '<a class="btn btn-primary" onclick="viewRow(' + '\'' + row.id + '\'' + ');">View <span class="glyphicon glyphicon-picture"></span></a>';
     }
     return data;
 }

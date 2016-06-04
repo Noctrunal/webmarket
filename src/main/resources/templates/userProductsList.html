@@ -17,7 +17,7 @@
             <div th:if="${product.amount > 0}" th:remove="tag">
                 <div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img class="group list-group-image" th:src="${product.imageUrl}" alt=""/>
+                        <img class="group list-group-image" th:src="${product.imageUrl}"/>
                         <div class="caption">
                             <h4>
                                 <h4 class="group inner list-group-item-heading" th:text="${product.brand}"
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
-                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
+                                    <a class="btn btn-primary" th:onclick="'javascript:viewRow(\'' + ${product.id} + '\')'">View details <span class="glyphicon glyphicon-picture"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,10 @@
         </div>
     </div>
 </div>
+<div th:substituteby="/fragments/modals/viewModal :: div"></div>
 </body>
 <footer th:substituteby="/fragments/footer :: footer"></footer>
 <script type="text/javascript" th:src="@{/javascript/productsList.js}"></script>
+<script type="text/javascript" th:src="@{/javascript/datatablesUtils.js}"></script>
+<script type="text/javascript" th:src="@{/javascript/productsDatatables.js}"></script>
 </html>

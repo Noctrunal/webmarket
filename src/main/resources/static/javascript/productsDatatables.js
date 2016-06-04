@@ -54,6 +54,11 @@ $(function () {
             {
                 'orderable': false,
                 'defaultContent': '',
+                'render': renderViewButton
+            },
+            {
+                'orderable': false,
+                'defaultContent': '',
                 'render': renderEditButton
             },
             {
