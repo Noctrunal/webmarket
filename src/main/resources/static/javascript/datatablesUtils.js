@@ -18,6 +18,11 @@ function makeEditable() {
     });
 }
 
+function login() {
+    debugger;
+    $('#loginModal').modal();
+}
+
 function add() {
     form.find(':input').val('');
     $('#releaseYear').val(0);

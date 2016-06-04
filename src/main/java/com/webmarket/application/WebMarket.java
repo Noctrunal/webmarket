@@ -21,7 +21,8 @@ public class WebMarket {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http.requiresChannel().anyRequest().requiresSecure();
-            http.formLogin().loginPage("/login").failureUrl("/login?error").permitAll().and().logout().permitAll().and().rememberMe().rememberMeParameter("remember-me");
+            http.formLogin().loginPage("/products").failureUrl("/products?login_error").permitAll()
+                    .and().logout().logoutSuccessUrl("/").permitAll().and().rememberMe().rememberMeParameter("remember-me");
             http.authorizeRequests().antMatchers("/manage/**").hasRole("ADMIN");
         }
 

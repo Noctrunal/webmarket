@@ -22,7 +22,6 @@ public class RootController extends AbstractProductsController {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("login");
         registry.addViewController("/manage").setViewName("adminProductsList");
         registry.addViewController("/products").setViewName("userProductsList");
         registry.addViewController("/").setViewName("userProductsList");

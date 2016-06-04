@@ -16,7 +16,7 @@
                             </button>
                         </div>
                         <div sec:authorize="isAnonymous()" th:remove="tag">
-                            <a th:href="@{/login}" class="btn btn-success">Sign in <span
+                            <a th:onclick="'javascript:login()'" class="btn btn-success">Sign in <span
                                     class="glyphicon glyphicon-log-in"></span></a>
                         </div>
                     </form>
