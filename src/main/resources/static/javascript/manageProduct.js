@@ -39,9 +39,6 @@ $(function () {
                 'data': 'amount'
             },
             {
-                'data': 'date'
-            },
-            {
                 'orderable': false,
                 'defaultContent': '',
                 'render': function (data, type, row) {

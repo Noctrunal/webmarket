@@ -1,6 +1,6 @@
 package com.webmarket.application.controller.web;
 
-import com.webmarket.application.controller.AbstractProductsController;
+import com.webmarket.application.controller.AbstractProductController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,15 +9,15 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
-public class RootController extends AbstractProductsController {
+public class WebController extends AbstractProductController {
     @RequestMapping(value = "/manage", method = GET)
-    public String manage() {
-        return "adminProductsList";
+    public ModelAndView manage() {
+        return new ModelAndView("adminProductList");
     }
 
     @RequestMapping(value = {"/", "/products"}, method = GET)
     public ModelAndView products() {
-        return new ModelAndView("userProductsList", "products", super.getAll());
+        return new ModelAndView("userProductList", "products", super.getAll());
     }
 
     @Override

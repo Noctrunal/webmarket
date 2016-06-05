@@ -28,8 +28,8 @@
                             <p class="group inner list-group-item-text" th:text="${product.description}"></p>
                             <div class="row">
                                 <div class="col-xs-12 col-md-6">
-                                    <div class="lead">$
-                                        <p th:text="${product.price}" th:remove="tag"></p>
+                                    <div class="lead">
+                                        $<p th:text="${product.price}" th:remove="tag"></p>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
@@ -47,7 +47,7 @@
 <div th:substituteby="/fragments/modals/loginModal :: div"></div>
 </body>
 <footer th:substituteby="/fragments/footer :: footer"></footer>
-<script type="text/javascript" th:src="@{/javascript/productsList.js}"></script>
-<script type="text/javascript" th:src="@{/javascript/datatablesUtils.js}"></script>
-<script type="text/javascript" th:src="@{/javascript/productsDatatables.js}"></script>
+<script type="text/javascript" th:src="@{/javascript/productList.js}"></script>
+<script type="text/javascript" th:src="@{/javascript/manageUtil.js}"></script>
+<script type="text/javascript" th:src="@{/javascript/manageProduct.js}"></script>
 </html>

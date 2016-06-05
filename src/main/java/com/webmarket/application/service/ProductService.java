@@ -2,14 +2,14 @@ package com.webmarket.application.service;
 
 import com.webmarket.application.model.Product;
 
-import java.util.Collection;
+import java.util.List;
 
-public interface ProductsService {
+public interface ProductService {
     Product save(Product product);
 
     Product get(String id);
 
     void delete(String id);
 
-    Collection<Product> getAll();
+    List<Product> getAll();
 }

@@ -1,35 +1,35 @@
 package com.webmarket.application.service;
 
-import com.webmarket.application.dao.ProductsDAO;
 import com.webmarket.application.model.Product;
+import com.webmarket.application.repository.ProductRepository;
 import com.webmarket.application.util.ExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
 
 @Service
-public class ProductsServiceImpl implements ProductsService {
+public class ProductServiceImpl implements ProductService {
     @Autowired
-    private ProductsDAO dao;
+    private ProductRepository repository;
 
     @Override
     public Product save(Product product) {
-        return dao.save(product);
+        return repository.save(product);
     }
 
     @Override
     public Product get(String id) {
-        return ExceptionUtil.checkEntity(dao.findOne(id), id);
+        return ExceptionUtil.checkEntity(repository.findOne(id), id);
     }
 
     @Override
     public void delete(String id) {
-        ExceptionUtil.checkEntity(dao.deleteById(id), id);
+        ExceptionUtil.checkEntity(repository.deleteById(id), id);
     }
 
     @Override
-    public Collection<Product> getAll() {
-        return dao.findAll();
+    public List<Product> getAll() {
+        return repository.findAll();
     }
 }

@@ -1,47 +1,69 @@
 package com.webmarket.application.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
 
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
-public class Product extends BaseEntity {
-    private static final String JSON_DATE_PATTERN = "yyyy-MM-dd";
-
-    private Integer releaseYear;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = JSON_DATE_PATTERN)
-    private Date date = new Date();
-
-    private String brand;
-
-    private String type;
-
-    private double price;
-
-    private int amount;
-
-    private String description;
+public class Product {
+    @Id
+    private String id;
 
     private String imageUrl;
+
+    @NotNull(message = "must not be null")
+    private int releaseYear;
+
+    @NotEmpty(message = "must not be empty")
+    private String brand;
+
+    @NotEmpty(message = "must not be empty")
+    private String type;
+
+    @NotEmpty(message = "must not be empty")
+    private String description;
+
+    @NotNull(message = "must not be null")
+    private int price;
+
+    @NotNull(message = "must not be null")
+    private int amount;
 
     public Product() {
     }
 
-    public Product(String id, int releaseYear, String brand, String type, double price, int amount, String description) {
-        super(id);
+    public Product(String id, String imageUrl, int releaseYear, String brand, String type, String description, int price, int amount) {
+        this.id = id;
+        this.imageUrl = imageUrl;
         this.releaseYear = releaseYear;
         this.brand = brand;
         this.type = type;
+        this.description = description;
         this.price = price;
         this.amount = amount;
-        this.description = description;
     }
 
-    public Integer getReleaseYear() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = (id.isEmpty() ? null : id);
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(Integer releaseYear) {
+    public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
 
@@ -53,36 +75,12 @@ public class Product extends BaseEntity {
         this.brand = brand;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 
     public String getDescription() {
@@ -93,11 +91,19 @@ public class Product extends BaseEntity {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public int getPrice() {
+        return price;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

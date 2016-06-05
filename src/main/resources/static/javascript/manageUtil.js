@@ -19,16 +19,15 @@ function makeEditable() {
 }
 
 function login() {
-    debugger;
     $('#loginModal').modal();
 }
 
 function add() {
     form.find(':input').val('');
-    $('#releaseYear').val(0);
+    form.find("img[name='imageUrl']").attr('src', 'https://placehold.it/400x250/000/fff');
+    $('#releaseYear').val(2000);
     $('#price').val(0);
     $('#amount').val(0);
-    $('#id').val(0);
     $('#editModal').modal();
 }
 
@@ -40,7 +39,7 @@ function save() {
         data: formData,
         contentType: false,
         processData: false,
-        success: function (data) {
+        success: function () {
             $('#editModal').modal('hide');
             updateTable();
             successNote('Saved');
@@ -52,11 +51,10 @@ function viewRow(id) {
     var viewForm = $('#viewForm');
     $.get(ajaxUrl + id, function (data) {
         $.each(data, function (key, value) {
-            debugger;
             viewForm.find("input[name='" + key + "']").val(value);
             viewForm.find("textArea[name='" + key + "']").val(value);
+            viewForm.find("img[name='" + key + "']").attr('src', value);
         });
-        $('#imageUrl').attr('src', data.imageUrl);
     });
     $('#viewModal').modal();
 }
@@ -66,6 +64,7 @@ function updateRow(id) {
         $.each(data, function (key, value) {
             form.find("input[name='" + key + "']").val(value);
             form.find("textArea[name='" + key + "']").val(value);
+            form.find("img[name='" + key + "']").attr('src', value === '' ? 'https://placehold.it/400x250/000/fff' : value);
         });
         $('#editModal').modal();
     });

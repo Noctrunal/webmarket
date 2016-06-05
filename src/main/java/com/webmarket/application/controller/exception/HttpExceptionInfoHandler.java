@@ -39,6 +39,14 @@ public class HttpExceptionInfoHandler {
         return getHttpExceptionInfo(req, new ValidationException(sb.toString()));
     }
 
+    @ResponseStatus(UNSUPPORTED_MEDIA_TYPE)
+    @ExceptionHandler(ImageUploadException.class)
+    @ResponseBody
+    @Order(4)
+    public HttpExceptionInfo handleImageUploadException(HttpServletRequest req, ImageUploadException e) {
+        return getHttpExceptionInfo(req, e);
+    }
+
     private HttpExceptionInfo getHttpExceptionInfo(HttpServletRequest req, Throwable e) {
         return new HttpExceptionInfo(req.getRequestURL(), e);
     }

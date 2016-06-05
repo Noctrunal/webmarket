@@ -1,6 +1,9 @@
 package com.webmarket.application.controller.manager;
 
 import com.webmarket.application.controller.exception.AmazonStorageManagerException;
+import com.webmarket.application.controller.exception.ImageUploadException;
+import com.webmarket.application.controller.exception.ResourceUploadException;
+import com.webmarket.application.util.AmazonStorageUtil;
 import org.jets3t.service.S3Service;
 import org.jets3t.service.S3ServiceException;
 import org.jets3t.service.acl.AccessControlList;
@@ -18,6 +21,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
 @Configuration
 @PropertySource("classpath:amazon-s3.properties")
@@ -61,22 +65,18 @@ public class AmazonStorageManager {
             imageObject.setContentLength(image.getBytes().length);
             imageObject.setContentType("image/jpeg");
 
+            AmazonStorageUtil.validationImage(image);
+
             s3Service.putObject(imageBucket, imageObject);
 
-        } catch (Exception e) {
+        } catch (S3ServiceException e) {
             throw new AmazonStorageManagerException("Connection to AWS failed");
+        } catch (IOException e) {
+            throw new ResourceUploadException("Fail to upload image");
+        } catch (ImageUploadException e) {
+            throw new ImageUploadException(e.getLocalizedMessage());
         }
 
         return getUrl(fileName);
-    }
-
-    public void delete(String key) {
-        try {
-            S3Service s3Service = getService();
-            S3Bucket imageBucket = getBucket(s3Service);
-            s3Service.deleteObject(imageBucket, key);
-        } catch (Exception e) {
-            throw new AmazonStorageManagerException("Connection to AWS failed");
-        }
     }
 }
