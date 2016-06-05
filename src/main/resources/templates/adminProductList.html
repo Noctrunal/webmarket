@@ -27,7 +27,7 @@
             </thead>
         </table>
     </div>
-    <a class="btn btn-primary" onclick="add()">Add <span class="glyphicon glyphicon-plus"></span></a>
+    <a class="btn btn-primary" th:onclick="'javascript:add()'">Add <span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div th:substituteby="/fragments/modals/editModal :: div"></div>
 <div th:substituteby="/fragments/modals/viewModal :: div"></div>

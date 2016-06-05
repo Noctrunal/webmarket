@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class AmazonStorageUtil {
+    private AmazonStorageUtil() {
+    }
+
     public static void validationImage(MultipartFile image) {
         try {
             if (!image.getContentType().equals("image/jpeg")) {

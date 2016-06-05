@@ -17,23 +17,27 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @RequestMapping("/ajax/admin/products/")
 public class AjaxProductController extends AbstractProductController {
+    @Override
     @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
     public List<Product> getAll() {
         return super.getAll();
     }
 
+    @Override
     @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
     public Product get(@PathVariable("id") String id) {
         return super.get(id);
     }
 
+    @Override
     @RequestMapping(value = "/{id}", method = DELETE)
     public void delete(@PathVariable("id") String id) {
         super.delete(id);
     }
 
+    @Override
     @RequestMapping(method = POST)
-    public void createOrUpdate(@Valid Product product, @RequestParam(value = "image", required = false) MultipartFile image) {
+    public void save(@Valid Product product, @RequestParam(value = "image", required = false) MultipartFile image) {
         super.save(product, image);
     }
 }

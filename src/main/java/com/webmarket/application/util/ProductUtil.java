@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductUtil {
+    private ProductUtil() {
+    }
+
     public static List<Product> getFilteredByPrice(List<Product> products, double startPrice, double endPrice) {
         return products.stream().filter(
                 product -> FilterUtil.isBetweenPrices(startPrice, endPrice, product.getPrice())).map(
